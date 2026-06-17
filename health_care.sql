@@ -29,3 +29,22 @@ select gender,occupation, Exercise_Frequency_Per_Week from health_dataset where 
 
 --Task: Find the average stress level for each occupation in the dataset.
 select occupation,round(avg(stress_level),0) as avg_stress_level from health_dataset group by occupation
+
+--Task:Show all distinct countries and number of country in the dataset.
+select distinct Country from health_dataset order by Country ASC
+select count(Country) as total_number_country from health_dataset
+
+--Task:Display all unique occupations.
+select distinct occupation from health_dataset
+
+--Task:Find the top 5 countries with the highest average health score.
+  --Use GROUP BY, AVG(), ORDER BY, and TOP.
+select top 5 Country, avg(health_score) as avg_health_score from health_dataset group by country order by Country asc,avg_health_score asc
+
+--Task: Find all distinct occupations among participants whose health score is above 85.
+select distinct occupation from health_dataset where Health_Score>85 order by occupation asc
+
+--Task:Show genders with an average health score above 70 and order them from highest to lowest average score.
+--Use GROUP BY, AVG(), HAVING, and ORDER BY.
+select distinct gender,avg(health_score) as avg_health_score from health_dataset group by gender having avg(health_score)>70 order by avg_health_score desc
+
